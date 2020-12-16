@@ -15,7 +15,7 @@ function askIntern () {
         name,school, etc
 
         team.push(newIntern("Chidi , Ut Austin));
-    }(
+    })
 }
 
 
@@ -27,6 +27,7 @@ What is managers's office number? 100
 We must have 1 manager
 0 to many Engineers
 0 to many interns
+
 
 //this team array will be passed inside my render method
 //very last part that i should work on 
@@ -41,6 +42,7 @@ team = [
 
 Do 3 prompt, with seperate questions
 start with manager and have 3 different functions
+
 
 ex: make sure you add in what type of team member would you like to add in managers section
 
