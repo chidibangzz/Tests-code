@@ -1,0 +1,23 @@
+{
+  "name": "Tests-code",
+  "version": "1.0.0",
+  "description": "first step is to get inquirir to just get questions get prompts working second step get classes working third create one manager see if can load on page fourth then look in recursion for building the entire team",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chidibangzz/Tests-code.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chidibangzz/Tests-code/issues"
+  },
+  "homepage": "https://github.com/chidibangzz/Tests-code#readme",
+  "dependencies": {
+    "inquirer": "^7.3.3"
+  }
+}
