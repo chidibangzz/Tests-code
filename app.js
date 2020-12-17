@@ -13,78 +13,56 @@ const render = require("./lib/htmlRenderer");
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
+function createManager() {
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "managerName",
+            message: "What is your manager's name?",
+        },
+        {
+            type: "input",
+            name: "managersId",
+            message: "What is your manager's Id",
+        },
+        {
+            type: "input",
+            name: "managersEmail",
+            message: "What is your manager's email",
+        },
+        {
+            type: "list",
+            name: "managersEmail",
+            message: "Would you like like to add a team member?",
+            choices: [
+                "Engineer",
+                "Intern",
+                "I do not want to add any team members"
+            ]
+        },
+    
+    ]).then(answers => {
+        const manager = new Manager(answers.managerName)
+        console.log(manager)
+        // switch(answers.Manager) {
+        //     case "Engineer":
+        //     addEngineer();
+        //     break;
+        //     case "Intern":
+        //     addIntern();
+        //     break;
+        //     default:
+        //     buildTeam()
+        // }
+    });
+    // createTeam()
+}
+// function createTeam() {
+//     inquirer.prompt
+// }
 
 
-    function createManager() {
-        inquirer.prompt([
-            {
-                type: "input",
-                name: "managerName",
-                message: "What is your manager's name?",
-            },
-            {
-                type: "input",
-                name: "managersId",
-                message: "What is your manager's Id",
-            },
-            {
-                type: "input",
-                name: "managersEmail",
-                message: "What is your manager's email",
-            },
-            {
-                type: "list",
-                name: "managersEmail",
-                message: "Would you like like to add a team member?",
-                choices: [
-                    "Engineer",
-                    "Intern",
-                    "I do not want to add any team members"
-                ]
-            },
-        
-        ]).then(answers => {
-            const manager = new Manager(answers.managerName)
-            console.log(manager)
-            // switch(answers.Manager) {
-            //     case "Engineer":
-            //     addEngineer();
-            //     break;
-            //     case "Intern":
-            //     addIntern();
-            //     break;
-            //     default:
-            //     buildTeam()
-            // }
-        });
-        // createTeam()
-    }
-    // function createTeam() {
-    //     inquirer.prompt
-    // }
-
-
-    createManager()
-
-    // function createIntern() {
-    //     inquirer.prompt([
-    //         {
-    //             type: "input",
-    //             name: "interName",
-    //             message: "what is the Intern's name"
-
-    //         }
-    //     ]).then(answers => {
-    //         const 
-    //     })
-    // }
-
-
-
-
-
-
-
+createManager()
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
