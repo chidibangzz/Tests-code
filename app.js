@@ -9,11 +9,26 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
+const { create } = require("domain");
+const { returnStatement } = require("@babel/types");
 
-
+const buildTeam = [];
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
-function createManager() {
+
+
+createIntern()
+createEngineer()
+createManager()
+
+
+
+
+
+
+function createManager()
+{
+
     inquirer.prompt([
         {
             type: "input",
@@ -31,38 +46,165 @@ function createManager() {
             message: "What is your manager's email",
         },
         {
+            type: "input",
+            name: "managersOfficeN",
+            message: "What is your Managers office number?",
+        },
+        {
             type: "list",
-            name: "managersEmail",
+            name: "managersList",
             message: "Would you like like to add a team member?",
             choices: [
                 "Engineer",
                 "Intern",
+                "Manager",
                 "I do not want to add any team members"
             ]
         },
-    
+
     ]).then(answers => {
-        const manager = new Manager(answers.managerName)
-        console.log(manager)
-        // switch(answers.Manager) {
-        //     case "Engineer":
-        //     addEngineer();
-        //     break;
-        //     case "Intern":
-        //     addIntern();
-        //     break;
-        //     default:
-        //     buildTeam()
-        // }
+        const { managerName, managersId, managersEmail, managersOfficeN, managersList } = answers
+        const manager = new Manager(managerName, managersId, managersEmail, managersOfficeN)
+        buildTeam.push(manager)
+
+    
+
+        switch (managersList) {
+            case "Engineer":
+                createEngineer();
+                break;
+            case "Intern":
+                createIntern();
+                break;
+            case "Manager":
+                createManager()
+                break;
+            default:
+            
+            "I do not want to add any team members"
+        }
     });
     // createTeam()
 }
-// function createTeam() {
-//     inquirer.prompt
-// }
 
 
-createManager()
+
+function createIntern() {
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "internName",
+            message: "Whats your Intern's name?",
+        },
+        {
+            type: "input",
+            name: "internId",
+            message: "what is your Intern's Id",
+        },
+        {
+            type: "input",
+            name: "internsEmail",
+            message: "what is your Interns email",
+        },
+        {
+            type: "input",
+            name: "internSchool",
+            message: "What school did your intern go to?",
+        },
+        {
+            type: "list",
+            name: "internList",
+            message: "Would you like to add a team member?",
+            choices: [
+                "Engineer",
+                "Employee",
+                "Intern",
+                "I do not want to add a team members",
+            ]
+        },
+    ]).then(internChoices => {
+        const { internName, internId, internsEmail, internSchool, internList } = internChoices
+        const intern = new Intern(internName, internId, internsEmail, internSchool)
+        buildTeam.push(intern);
+
+
+        switch (internList) {
+            case "Engineer":
+                createEngineer();
+                break;
+            case "Intern":
+                createIntern();
+                break;
+            case "Manager":
+                createManager();
+                break;
+            default:
+                
+             "I do not want to add a team members"
+        }
+    });
+}
+
+
+
+function createEngineer() {
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "engineerName",
+            message: "what is your Engineers name?",
+
+        },
+        {
+            type: "input",
+            name: "engineersId",
+            message: "what is your Engineers id",
+        },
+        {
+            type: "input",
+            name: "engineerEmail",
+            message: "What is your engineers Email",
+        },
+        {
+            type: "input",
+            name: "engineersGithub",
+            message: "What is your engineers Github?",
+        },
+        {
+            type: "input",
+            name: "engineerList",
+            message: "Would you like to add any team members",
+            choices: [
+                "Intern",
+                "Engineer",
+                "Manager",
+                "I do not want to add any team members",
+            ]
+        },
+    ]).then(answersE => {
+        const { engineerName, engineersId, engineerEmail, engineersGithub, engineerList } = answersE;
+        const engineer = new Engineer(engineerName, engineersId, engineerEmail, engineersGithub)
+        buildTeam.push(engineer);
+
+
+        switch (engineerList) {
+            case "Engineer":
+                createEngineer();
+                break;
+            case "Intern":
+                createIntern();
+                break;
+            case "Manager":
+                createManager();
+            default:
+           
+           "I do not want to add a team members"
+        }
+    });
+}
+
+
+
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
