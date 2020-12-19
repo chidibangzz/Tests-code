@@ -10,25 +10,31 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 const { create } = require("domain");
-const { returnStatement } = require("@babel/types");
+const { returnStatement, createTypeAnnotationBasedOnTypeof } = require("@babel/types");
 
 const buildTeam = [];
+
+
+
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
+
+ 
 
 
 
     createManager()
     
-    function createIntern() {
-        setTimeout(function(){ alert("after .4seconds!"); }, 400);
-    }
-    function createEngineer() {
-        setTimeout(function(){ alert("After .5seconds!"); }, 500);
-    }
-
-
+    // function createIntern() {
+    //     setTimeout(function(){ alert("after .4seconds!"); }, 100);
+    // }
+    // function createEngineer() {
+    //     setTimeout(function(){ alert("After .5seconds!"); }, 200);
+    // }
+    // function createTeam() {
+    //     setTimeout(function(){ alert("After .5seconds!"); }, 300);
+    // }
 
 function createManager() {
 
@@ -70,7 +76,7 @@ function createManager() {
         const manager = new Manager(managerName, managersId, managersEmail, managersOfficeN)
         buildTeam.push(manager)
 
-        console.log(buildTeam)
+        // console.log(buildTeam)
 
         switch (managersList) {
             case "Engineer":
@@ -83,8 +89,8 @@ function createManager() {
                 createManager()
                 break;
             default:
-
-                "I do not want to add any team members"
+                createTeam()
+                
 
         }
     });
@@ -124,6 +130,7 @@ function createIntern() {
                 "Manager",
                 "Intern",
                 "I do not want to add a team members",
+                
             ]
         },
     ]).then(internChoices => {
@@ -144,8 +151,9 @@ function createIntern() {
                 createManager();
                 break;
             default:
+                createTeam()
                 "I do not want to add a team members"
-
+                
         }
     });
 }
@@ -192,6 +200,7 @@ function createEngineer() {
         buildTeam.push(engineer);
 
         console.log(buildTeam)
+
         switch (engineerList) {
             case "Engineer":
                 createEngineer();
@@ -203,11 +212,19 @@ function createEngineer() {
                 createManager();
                 break;
             default:
+                createTeam()
               "I do not want to add a team members"
         }
     });
 }
 
+function createTeam() {
+    let data = render(buildTeam)
+    fs.writeFileSync(outputPath,data,'utf-8')
+    console.log("file created");
+}
+// .then((answers) => writeFileSync('./lib/htmlRenderer', buildTeam(answers)))
+// .then(() => console.log('Congratulations on completing your html page'))
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
