@@ -17,17 +17,20 @@ const buildTeam = [];
 // and to create objects for each team member (using the correct classes as blueprints!)
 
 
-createIntern()
-createEngineer()
-createManager()
+
+
+    createManager()
+    
+    function createIntern() {
+        setTimeout(function(){ alert("after .4seconds!"); }, 400);
+    }
+    function createEngineer() {
+        setTimeout(function(){ alert("After .5seconds!"); }, 500);
+    }
 
 
 
-
-
-
-function createManager()
-{
+function createManager() {
 
     inquirer.prompt([
         {
@@ -67,7 +70,7 @@ function createManager()
         const manager = new Manager(managerName, managersId, managersEmail, managersOfficeN)
         buildTeam.push(manager)
 
-    
+        console.log(buildTeam)
 
         switch (managersList) {
             case "Engineer":
@@ -80,8 +83,9 @@ function createManager()
                 createManager()
                 break;
             default:
-            
-            "I do not want to add any team members"
+
+                "I do not want to add any team members"
+
         }
     });
     // createTeam()
@@ -117,7 +121,7 @@ function createIntern() {
             message: "Would you like to add a team member?",
             choices: [
                 "Engineer",
-                "Employee",
+                "Manager",
                 "Intern",
                 "I do not want to add a team members",
             ]
@@ -127,6 +131,7 @@ function createIntern() {
         const intern = new Intern(internName, internId, internsEmail, internSchool)
         buildTeam.push(intern);
 
+        console.log(buildTeam)
 
         switch (internList) {
             case "Engineer":
@@ -139,8 +144,8 @@ function createIntern() {
                 createManager();
                 break;
             default:
-                
-             "I do not want to add a team members"
+                "I do not want to add a team members"
+
         }
     });
 }
@@ -171,14 +176,14 @@ function createEngineer() {
             message: "What is your engineers Github?",
         },
         {
-            type: "input",
+            type: "list",
             name: "engineerList",
             message: "Would you like to add any team members",
             choices: [
                 "Intern",
                 "Engineer",
                 "Manager",
-                "I do not want to add any team members",
+                "I do not want to add any team members?",
             ]
         },
     ]).then(answersE => {
@@ -186,7 +191,7 @@ function createEngineer() {
         const engineer = new Engineer(engineerName, engineersId, engineerEmail, engineersGithub)
         buildTeam.push(engineer);
 
-
+        console.log(buildTeam)
         switch (engineerList) {
             case "Engineer":
                 createEngineer();
@@ -196,14 +201,12 @@ function createEngineer() {
                 break;
             case "Manager":
                 createManager();
+                break;
             default:
-           
-           "I do not want to add a team members"
+              "I do not want to add a team members"
         }
     });
 }
-
-
 
 
 // After the user has input all employees desired, call the `render` function (required
