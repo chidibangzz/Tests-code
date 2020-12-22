@@ -18,21 +18,18 @@ My product projects dynaimcally updates and have as many mangers interns and eng
 
 
 ## How to use?
-When user loads page there is animation boucing icon
-When user clics on remume icon, there will diplayed a link to my resume
-When user clicks on porfolio icon they will see a list of my projects and will be directed to my github
-when user clicks contact they will be given a message box where we can communicate
+When user loads the page then a series of prompts will be displayed
+When user adds a team member from the prompt(engineer,employee,intern,manager) then team member(s) will be saved
+When user clicks "I don't want to add any more team members" then a html page with with there selected team members will be displayed in a card
 
 ## Contribute
 
 Please feel free contritbute to my project by contacting me  A [contributing guideline](https://www.linkedin.com/in/chidi-ekeke-038609172/
 ## Credits
-Jim fahad Digital
-https://www.youtube.com/watch?v=AJjGCzrFz3Y&ab_channel=JimFahadDigital
+Daniel Vega, Dan sires
 
-#### Anything else that seems useful
 
 ## License
-Javascript, Css, Html, Jquery
+Javascript, Html, Jquery, node
 
 MIT © [Chidi Ekeke]()
