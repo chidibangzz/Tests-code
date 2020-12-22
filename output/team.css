@@ -1,0 +1,13 @@
+
+
+
+.card-body {
+    background-color:  rgba(0, 119, 255, 0.253);
+}
+
+li.list-group-item {
+    background-color: white;
+}
+.card-header {
+    background-color: rgba(0, 119, 255, 0.253);
+}

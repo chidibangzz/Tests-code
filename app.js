@@ -26,16 +26,7 @@ const buildTeam = [];
 
     createManager()
     
-    // function createIntern() {
-    //     setTimeout(function(){ alert("after .4seconds!"); }, 100);
-    // }
-    // function createEngineer() {
-    //     setTimeout(function(){ alert("After .5seconds!"); }, 200);
-    // }
-    // function createTeam() {
-    //     setTimeout(function(){ alert("After .5seconds!"); }, 300);
-    // }
-
+    
 function createManager() {
 
     inquirer.prompt([
@@ -76,7 +67,7 @@ function createManager() {
         const manager = new Manager(managerName, managersId, managersEmail, managersOfficeN)
         buildTeam.push(manager)
 
-        // console.log(buildTeam)
+      
 
         switch (managersList) {
             case "Engineer":
@@ -138,7 +129,7 @@ function createIntern() {
         const intern = new Intern(internName, internId, internsEmail, internSchool)
         buildTeam.push(intern);
 
-        console.log(buildTeam)
+      
 
         switch (internList) {
             case "Engineer":
@@ -199,7 +190,7 @@ function createEngineer() {
         const engineer = new Engineer(engineerName, engineersId, engineerEmail, engineersGithub)
         buildTeam.push(engineer);
 
-        console.log(buildTeam)
+        
 
         switch (engineerList) {
             case "Engineer":
